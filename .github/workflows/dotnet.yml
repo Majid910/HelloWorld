@@ -9,7 +9,7 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -23,19 +23,19 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Development
-      url: 'http://dev.myapp.com'
+      url: ''
     steps:
       - name: Deploy
         run: echo I am deploying! 
     
   DeployStaging:
     name: Deploy to Staging 
-    if: github.event.ref == 'refs/heads/main'
+    if: github.event.ref == ''
     needs: [Build]
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: 
       name: Staging
-      url: 'http://test.myapp.com'
+      url: ''
     steps:
       - name: Deploy
         run: echo I am deploying! 
@@ -43,10 +43,10 @@ jobs:
   DeployProd:
     name: Deploy to Production 
     needs: [DeployStaging]
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: 
-      name: Production
-      url: 'http://www.myapp.com'
+      name: Majid
+      url: ''
     steps:
       - name: Deploy
         run: echo I am deploying! 
